@@ -1,1 +1,43 @@
-var _0xb060=["\x73\x65\x6E\x74\x65\x6E\x63\x65\x49\x6E\x70\x75\x74","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x65\x6D\x6F\x6A\x69\x49\x6E\x70\x75\x74","\x72\x65\x73\x75\x6C\x74","\x76\x61\x6C\x75\x65","","\x69\x6E\x6E\x65\x72\x48\x54\x4D\x4C","\x4F\x6F\x70\x70\x73\x20\x6D\x61\x67\x2D\x74\x79\x70\x65\x20\x6B\x61\x20\x6D\x75\x6E\x61\x20\x67\x69\x72\x6C","\x4F\x6F\x70\x70\x73\x20\x74\x79\x70\x65\x20\x6D\x6F\x20\x6D\x75\x6E\x61\x20\x65\x6D\x6F\x6A\x69\x20\x6E\x61\x20\x67\x75\x73\x74\x6F\x20\x6D\x6F","\x4F\x6F\x70\x70\x73\x20\x68\x69\x6E\x64\x69\x20\x76\x61\x6C\x69\x64\x20\x61\x6E\x67\x20\x65\x6D\x6F\x6A\x69\x2E","\x6D\x61\x74\x63\x68","\x6C\x65\x6E\x67\x74\x68","\x20","\x3C\x73\x70\x61\x6E\x20\x63\x6C\x61\x73\x73\x3D\x27\x65\x6D\x6F\x6A\x69\x27\x3E","\x3C\x2F\x73\x70\x61\x6E\x3E\x20","\x74\x65\x73\x74"];function insertEmoji(){var _0x2f1cx2=document[_0xb060[1]](_0xb060[0]);var _0x2f1cx3=document[_0xb060[1]](_0xb060[2]);var _0x2f1cx4=document[_0xb060[1]](_0xb060[3]);var _0x2f1cx5=_0x2f1cx2[_0xb060[4]];var _0x2f1cx6=_0x2f1cx3[_0xb060[4]];if(_0x2f1cx5=== _0xb060[5]){_0x2f1cx4[_0xb060[6]]= _0xb060[7];return}else {if(_0x2f1cx6=== _0xb060[5]){_0x2f1cx4[_0xb060[6]]= _0xb060[8];return}else {if(!isEmoji(_0x2f1cx6)){_0x2f1cx4[_0xb060[6]]= _0xb060[9];return}}};var _0x2f1cx7=_0x2f1cx5[_0xb060[10]](/\S+/g);var _0x2f1cx8=_0xb060[5];for(var _0x2f1cx9=0;_0x2f1cx9< _0x2f1cx7[_0xb060[11]];_0x2f1cx9++){_0x2f1cx8+= _0x2f1cx7[_0x2f1cx9]+ _0xb060[12];_0x2f1cx8+= _0xb060[13]+ _0x2f1cx6+ _0xb060[14]};_0x2f1cx4[_0xb060[6]]= _0x2f1cx8}function isEmoji(_0x2f1cxb){var _0x2f1cxc=/[\uD800-\uDFFF]./;return _0x2f1cxc[_0xb060[15]](_0x2f1cxb)}
+function insertEmoji() {
+    var sentenceInput = document.getElementById("sentenceInput");
+    var emojiInput = document.getElementById("emojiInput");
+    var result = document.getElementById("result");
+
+    var sentence = sentenceInput.value;
+    var emoji = emojiInput.value;
+
+    playMusic()
+
+    if (sentence === "") {
+        result.innerHTML = "Oopps mag-type ka muna girl";
+        return;
+    } else if (emoji === "") {
+        result.innerHTML = "Oopps type mo muna emoji na gusto mo";
+        return;
+    } else if (!isEmoji(emoji)) {
+        result.innerHTML = "Oopps hindi valid ang emoji.";
+        return;
+    }
+
+    var words = sentence.match(/\S+/g);
+    var finalSentence = "";
+
+    for (var i = 0; i < words.length; i++) {
+        finalSentence += words[i] + " ";
+        finalSentence += "<span class='emoji'>" + emoji + "</span> ";
+    }
+
+    result.innerHTML = finalSentence;
+}
+
+function isEmoji(str) {
+    // Regular expression to check if the string contains at least one emoji
+    var emojiRegex = /[\uD800-\uDFFF]./;
+    return emojiRegex.test(str);
+}
+
+function playMusic() {
+    var audio = document.getElementById("myAudio");
+    audio.play();
+  }
+  
